@@ -3329,25 +3329,25 @@ input, select, textarea {
 		}
 /* Profile Image */
 
-.header-container {
-    display: flex;
-    align-items: center;
-	margin-top: 20px; /* Adjust this value to increase or decrease the space */
-}
+	.header-container {
+		display: flex;
+		align-items: center;
+		margin-top: 20px; /* Adjust this value to increase or decrease the space */
+	}
 
-.header-container h1 {
-    margin-right: 10px; /* Adjust the space between the h1 and the image */
-}
+	.header-container h1 {
+		margin-right: 10px; /* Adjust the space between the h1 and the image */
+	}
 
-.header-image {
-    width: 100px; /* Adjust this value as needed */
-    height: 100px; /* This should be the same as the width */
-    border-radius: 50%; /* This makes the image circular */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-    margin-right: 20px; /* Adds space to the right of the image */
-    align-self: flex-start; /* Aligns the image to the start of the flex container */
-}
+	.header-image {
+		width: 100px; /* Adjust this value as needed */
+		height: 100px; /* This should be the same as the width */
+		border-radius: 50%; /* This makes the image circular */
+		object-fit: cover; /* Ensures the image covers the area without stretching */
+		margin-right: 20px; /* Adds space to the right of the image */
+		align-self: flex-start; /* Aligns the image to the start of the flex container */
+	}
 
-.header-container h1 {
-    margin: 5px; /* Your adjusted margin */
-}
+	.header-container h1 {
+		margin: 5px; /* Your adjusted margin */
+	}
