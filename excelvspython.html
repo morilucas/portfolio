@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Phantom by HTML5 UP</title>
+		<title>Excel vs. Python</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -69,34 +69,16 @@
 												<li>Open File (only relevant for Excel)</li>
 												<li>Load Dataframes 1 and 2</li>
 												<li>Merge</li>
-												<li>Save .xlxs file</li>
+												<li>Save as a .csv/.xlsx file</li>
 											</ol>
 										</ol>
 
 								</div>
 
-
-
-							<h4>1. Generating Dummy Data:</h4>
-							<p>Using a Python script (dataframe_generator.ipynb), the process involves:</p>
-							<ul>
-								<li>Creating a single dataset with a variable number of rows and 60 columns.</li>
-								<li>Splitting this into two datasets of 30 columns each.</li>
-								<li>Randomizing the order of rows in the second dataset.</li>
-								<li>Saving both datasets in a folder.</li>
-								<li>Note: The choice of 30 columns fits the typical tasks I perform.</li>
-							</ul>
-						
-							<h4>2. Merging with Python:</h4>
-							<p>A Python script (merge_dataframes.ipynb) will load, combine, and save the merged data as a CSV file.</p>
-						
-							<h4>3. Merging with Excel:</h4>
-							<p>An Excel file (merge_dataframes.xlsx) performs similar functions: loading, merging, and saving the data as an XLSX file.</p>
-						
-							<p>This experiment aims to highlight the performance differences in data manipulation tasks between Excel and Python.</p>
-						
 							
-
+							<h2>Results:</h2>
+							
+							<h4>Overall Comparison</h4>
 
 							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
 								<figure style="flex: 1; margin-right: 10px; text-align: center;">
@@ -105,20 +87,23 @@
 								</figure>
 								<figure style="flex: 1; margin-left: 10px; text-align: center;">
 									<img src="images/excelvspython/howmanytimesslower_excel.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 2: XXX.</figcaption>
+									<figcaption>Figure 2: Performance Ratio of Excel to Python by Row Count. This graph illustrates how Excel's processing time compares to Python's across different data sizes.</figcaption>
 								</figure>
 							</div>
 							
+							<h4>Breakdown</h4>
 							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
 								<figure style="flex: 1; margin-right: 10px; text-align: center;">
 									<img src="images/excelvspython/breakdown_excel.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 3: XXX.</figcaption>
+									<figcaption>Figure 3: Proportional Time Spent on Each Operation in Excel by Row Volume.</figcaption>
 								</figure>
 								<figure style="flex: 1; margin-left: 10px; text-align: center;">
 									<img src="images/excelvspython/breakdown_python.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 4: XXX.</figcaption>
+									<figcaption>Figure 4: Proportional Time Spent on Each Operation in Python by Row Volume.</figcaption>
 								</figure>
 							</div>
+							
+							<h2>Takeaways:</h2>
 						</div>
 					</div>
 
