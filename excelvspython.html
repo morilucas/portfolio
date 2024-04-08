@@ -31,13 +31,94 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Generic Page</h1>
-							<img src="images/output.png" alt="Descriptive Text for New Image" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: auto;margin-bottom: 20px;"/>
-							<h3>Implication in Data Processing Pipelines</h3>
-							<p>For data scientists and engineers, this graph suggests that when working with large datasets in Pandas, it is more performance-effective to convert Excel files to CSV format before merging. This can facilitate faster data processing and reduce computational load, thereby optimizing the overall performance of data manipulation tasks within the Python ecosystem.</p>
-							<h3>Pandas Optimization</h3>
-							<p>The graph also indirectly speaks to the optimization of Pandas' CSV reading and merging functions. Even as the dataset size scales up to 1,000,000 rows, the time taken to merge remains consistently low, demonstrating the efficiency of Pandas when dealing with CSV files. This optimization ensures that data analysts and scientists can work with large volumes of data without facing significant delays, making CSV the preferred format for handling big data in Pandas.</p>				
+							<h1>Excel vs Python: Data Handling Experiment</h1>
+    
+							<p>Over the last six years, Excel has been my go-to tool in roles as diverse as management consulting and financial planning. I used it for a range of tasks from data analysis to note-taking. However, transitioning to data science, I discovered the speed and efficiency of Python for data handling, which led me to design this experiment.</p>
+							
+							<p>The experiment files can be found in my GitHub repository: <a href="https://github.com/morilucas/excelvspython">Excel vs. Python</a>.</p>
 						
+							<h2>Experiment Overview:</h2>
+						
+								<figure style="text-align: center; margin: 2em 0 1em 0;">
+									<img src="images/excelvspython/experiment.png" alt="Experiment Diagram" style="width: 30%; height: auto;"/>
+									<figcaption>Figure 1: Diagram of the experiment task.</figcaption>
+								</figure>
+
+								<div style="flex: 1;">
+									<p style="margin-right: 20px;">
+										The aim of the experiment is to compare Excel and Python's performance in a common task in the day-to-day routine of any analyst: loading datasets, merging and saving the results (Figure 1 - Step 2 Merge and Save). For that we will follow these steps:
+									</p>
+
+									<ol>
+										<li>Generate Datasets</li>
+										<ol>
+											<li>Create a dataset with 60 columns and a variable number of rows.</li>
+											<li>Split the dataset into two dataframes: 
+												<ul>
+													<li>Dataframe 1 consists of the first 30 columns.</li>
+													<li>Dataframe 2 consists of the remaining 30 columns.</li>
+												</ul>
+												Both dataframes should include a column with a unique identifier (a number that uniquely identifies each row).
+											</li>
+											<li>Shuffle the rows in Dataframe 2.</li>
+											<li>Save both dataframes. Then repeat the process with a different number of rows.</li>
+										</ol>
+										<li>Merge and save (timed task for both methods)</li>
+										<ol>
+											<ol>
+												<li>Open File (only relevant for Excel)</li>
+												<li>Load Dataframes 1 and 2</li>
+												<li>Merge</li>
+												<li>Save .xlxs file</li>
+											</ol>
+										</ol>
+
+								</div>
+
+
+
+							<h4>1. Generating Dummy Data:</h4>
+							<p>Using a Python script (dataframe_generator.ipynb), the process involves:</p>
+							<ul>
+								<li>Creating a single dataset with a variable number of rows and 60 columns.</li>
+								<li>Splitting this into two datasets of 30 columns each.</li>
+								<li>Randomizing the order of rows in the second dataset.</li>
+								<li>Saving both datasets in a folder.</li>
+								<li>Note: The choice of 30 columns fits the typical tasks I perform.</li>
+							</ul>
+						
+							<h4>2. Merging with Python:</h4>
+							<p>A Python script (merge_dataframes.ipynb) will load, combine, and save the merged data as a CSV file.</p>
+						
+							<h4>3. Merging with Excel:</h4>
+							<p>An Excel file (merge_dataframes.xlsx) performs similar functions: loading, merging, and saving the data as an XLSX file.</p>
+						
+							<p>This experiment aims to highlight the performance differences in data manipulation tasks between Excel and Python.</p>
+						
+							
+
+
+							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
+								<figure style="flex: 1; margin-right: 10px; text-align: center;">
+									<img src="images/excelvspython/avg_lineplot.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
+									<figcaption>Figure 1: Line Plot Comparison between Excel and Python. Blue line represents Excel data, and red line represents Python data.</figcaption>
+								</figure>
+								<figure style="flex: 1; margin-left: 10px; text-align: center;">
+									<img src="images/excelvspython/howmanytimesslower_excel.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
+									<figcaption>Figure 2: XXX.</figcaption>
+								</figure>
+							</div>
+							
+							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
+								<figure style="flex: 1; margin-right: 10px; text-align: center;">
+									<img src="images/excelvspython/breakdown_excel.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
+									<figcaption>Figure 3: XXX.</figcaption>
+								</figure>
+								<figure style="flex: 1; margin-left: 10px; text-align: center;">
+									<img src="images/excelvspython/breakdown_python.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
+									<figcaption>Figure 4: XXX.</figcaption>
+								</figure>
+							</div>
 						</div>
 					</div>
 
