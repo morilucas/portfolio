@@ -79,7 +79,7 @@
 							<h2>Results:</h2>
 							
 							<h4>Overall Comparison</h4>
-
+							<p>Our first step of the analysis is comparing the performance of both methods with the increase of number of rows. And after analyzing how many times excel is slower when compared to python for each number of rows.</p>
 							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
 								<figure style="flex: 1; margin-right: 10px; text-align: center;">
 									<img src="images/excelvspython/avg_lineplot.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
@@ -90,8 +90,13 @@
 									<figcaption>Figure 2: Performance Ratio of Excel to Python by Row Count. This graph illustrates how Excel's processing time compares to Python's across different data sizes.</figcaption>
 								</figure>
 							</div>
+							<ul>
+								<li>Analyzing Figure 1, we can observe that both Excel and Python exhibit a linear behavior as the number of rows increases. However, Excel's curve is noticeably steeper, indicating a faster growth in response time.</li>
+								<li>Moving on to Figure 2, excluding the results for tasks with 1,000 rows, we can conclude that Excel's performance is consistently at least ten times slower than Python's in executing the given task."</li>							</ul>
+							</ul>
 							
 							<h4>Breakdown</h4>
+							<p>To</p>
 							<div style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px;">
 								<figure style="flex: 1; margin-right: 10px; text-align: center;">
 									<img src="images/excelvspython/breakdown_excel.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
@@ -103,6 +108,11 @@
 								</figure>
 							</div>
 							
+							<ul>
+								<li>Figure 3 indicates that the time taken to open and save an Excel file may account for more than 40% of the total task duration, depending on the number of rows in the dataframes.</li>
+								<li>Figure 4 demonstrates that, on average, saving the results as a .csv file consumes more than 80% of the total processing time.</li>							
+							</ul>
+
 							<h2>Takeaways:</h2>
 						</div>
 					</div>

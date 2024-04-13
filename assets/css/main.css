@@ -33,9 +33,13 @@ body {
 	line-height: 1;
 }
 
+p {
+    font-size: 22px; /* Paragraphs */
+}
+
 ol, ul {
 	list-style: none;
-	font-size: 0.85em;
+	font-size: 22px;
 	margin: 0; /* Removes default margin */
 	padding: 0; /* Removes default padding */
 }
@@ -167,7 +171,7 @@ input, select, textarea {
 
 	p {
 		margin: 0 0 1em 0;
-		font-size: 0.85em;
+		font-size: 1.2em;
 	}
 
 	h1 {
@@ -3335,6 +3339,6 @@ input, select, textarea {
 /* Other */
 
 figcaption {
-	font-size: 10px;
+	font-size: 20px;
 	color: inherit;
 }
