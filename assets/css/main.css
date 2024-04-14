@@ -34,14 +34,18 @@ body {
 }
 
 p {
-    font-size: 22px; /* Paragraphs */
+    font-size: 20px; /* Paragraphs */
 }
 
 ol, ul {
 	list-style: none;
-	font-size: 22px;
+	font-size: 24px;
 	margin: 0; /* Removes default margin */
 	padding: 0; /* Removes default padding */
+}
+
+li {
+	font-size: 24px;
 }
 
 blockquote, q {
@@ -3339,6 +3343,6 @@ input, select, textarea {
 /* Other */
 
 figcaption {
-	font-size: 20px;
+	font-size: 22px;
 	color: inherit;
 }
