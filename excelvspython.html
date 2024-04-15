@@ -32,14 +32,15 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Excel vs Python: Data Handling Experiment</h1>
-							<p>In the last chapter of my career before starting my master's degree at Purdue University—a six-year period—Excel was my go-to tool. I used it for everything from data analysis to note-taking. However, as I transitioned into data science, I discovered how fast and efficient Python is for handling data. This discovery inspired me to design an experiment comparing Excel's Power Query, a tool for data manipulation, with Python's Pandas library. I hope this comparison will provide insights for those still undecided about incorporating Python into their data handling routines.</p>
-							<p>The experiment files can be found in my GitHub repository: <a href="https://github.com/morilucas/excelvspython">Excel vs. Python</a>.</p>
+								<p>In the final phase of my career as a financial planner and corporate finance practitioner, I heavily relied on Excel. It served as my go-to for not only data manipulation but also financial modeling, dashboard creation, note-taking, and project planning. However, transitioning into data science introduced me to Python's superior speed and efficiency in managing data—a potential I had always heard about but never integrated into my toolkit.</p>
+								<p>In this analysis, I aim to conduct a head-to-head comparison between Excel’s Power Query, a robust tool for data manipulation, and Python’s Pandas library. This comparison will focus on a task that was commonly encountered in my workflow: loading datasets, merging and transforming them and saving the results.</p>
+								<p>My goal is to provide valuable insights for those considering the integration of Python into their data handling processes.</p>
+								<p>You can find the files for this analysis in the <a href="https://github.com/morilucas/excelvspython">Github Repository</a>.</p>
+								<p><strong>Tools Used:</strong> Python, Pandas, Excel, Power Query, Seaborn</p>
 						
-							<h2>Experiment Overview:</h2>
+							<h2>Approach:</h2>
 						
-								<p style="margin-right: 20px;">
-									The aim of the experiment is to compare Excel and Python's performance in a common task in the day-to-day routine of any analyst: loading datasets, merging and saving the results (Figure 1 - Step 2 Merge and Save). For that we will follow these steps:
-								</p>
+								<p>The general plan involve two broad steps: 1. Generate Datasets -a Python script will generate two datasets, each with a flexible number of rows, allowing us to analyze how both methods perform as the number of rows increases; 2. Merge and save - an excel spreadsheet and a python script that will perform the same task of loading the data, merging the two datasets, and saving the results.</p>
 
 								<figure style="text-align: center; margin: 2em 0 2em 0;">
 									<img src="images/excelvspython/experiment.png" alt="Experiment Diagram" style="width: 30%; height: auto;"/>
@@ -70,55 +71,54 @@
 										</ol>
 									</ol>
 
-
-							<h2>Takeaways:</h2>
-							<p>Starting with the lessons learned with this exercise:</p>
-								<ul>
-									<li>Excel's Power Query is about 10 times slower than Python for the same task.</li>
-									<li>In Python, saving data to a .csv file can take up to 80% of the total time, so being mindful of when and how often you save data can greatly affect performance.</li>
-									<li>Contrary to intuition, loading and merging data takes less time than opening files and saving results for both methods.</li>
-								</ul>
-								<figure style="flex: 1; margin-right: 10px; text-align: center;">
-									<img src="images/excelvspython/takeaways.png" alt="Key Takeaways" style="width: 50%; height: auto;"/>
-								</figure>
-
-							<h2>Results:</h2>
+							<h2>Analysis:</h2>
 							
 							<h4>Overall Comparison</h4>
-							<p>Our first step of the analysis is comparing the performance of both methods with the increase of number of rows. And after analyzing how many times excel is slower when compared to python for each number of rows.</p>
-							<div style="display: flex; justify-content: center; align-items: center; margin: 2em 0 2em 0;">
-								<figure style="flex: 1; margin-right: 10px; text-align: center;">
-									<img src="images/excelvspython/avg_lineplot.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 1: Line Plot Comparison between Excel and Python. Blue line represents Excel data, and red line represents Python data.</figcaption>
-								</figure>
-								<figure style="flex: 1; margin-left: 10px; text-align: center;">
-									<img src="images/excelvspython/howmanytimesslower_excel.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 2: Performance Ratio of Excel to Python by Row Count. This graph illustrates how Excel's processing time compares to Python's across different data sizes.</figcaption>
-								</figure>
-							</div>
-							<ul>
-								<li>Analyzing Figure 1, we can observe that both Excel and Python exhibit a linear behavior as the number of rows increases. However, Excel's curve is noticeably steeper, indicating a faster growth in response time.</li>
-								<li>Moving on to Figure 2, excluding the results for tasks with 1,000 rows, we can conclude that Excel's performance is consistently at least ten times slower than Python's in executing the given task."</li>							</ul>
-							</ul>
+								<p>Our first step is to compare the performance of both methods as the number of rows increases and to assess how much slower Excel is compared to Python.</p>
+								<div style="display: flex; justify-content: center; align-items: center; margin: 2em 0 2em 0;">
+									<figure style="flex: 1; margin-right: 10px; text-align: center;">
+										<img src="images/excelvspython/avg_lineplot.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
+										<figcaption>Figure 1: Line Plot Comparison between Excel and Python. Blue line represents Excel data, and red line represents Python data.</figcaption>
+									</figure>
+									<figure style="flex: 1; margin-left: 10px; text-align: center;">
+										<img src="images/excelvspython/howmanytimesslower_excel.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
+										<figcaption>Figure 2: Performance Ratio of Excel to Python by Row Count. This graph illustrates how Excel's processing time compares to Python's across different data sizes.</figcaption>
+									</figure>
+								</div>
+								<ul>
+									<li>Analyzing Figure 1, we can observe that both Excel and Python exhibit a linear behavior as the number of rows increases. However, Excel's curve is noticeably steeper, indicating tha Excel's processing time increases more steeply compared to Python as the dataset size grows.</li>
+									<li>Moving on to Figure 2, excluding the results for tasks with 1,000 rows, we can conclude that Excel's performance is on average ten times slower than Python's in executing the given task.</li>
+								</ul>
 							
 							<h4>Breakdown</h4>
-							<p>To deepen our analysis, we further dissect the total time required to complete the task by examining the duration of each step and each method to gain more insights.</p>
-							<div style="display: flex; justify-content: center; align-items: center; margin: 2em 0 2em 0;">
-								<figure style="flex: 1; margin-right: 10px; text-align: center;">
-									<img src="images/excelvspython/breakdown_excel.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 3: Proportional Time Spent on Each Operation in Excel by Row Volume.</figcaption>
-								</figure>
-								<figure style="flex: 1; margin-left: 10px; text-align: center;">
-									<img src="images/excelvspython/breakdown_python.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
-									<figcaption>Figure 4: Proportional Time Spent on Each Operation in Python by Row Volume.</figcaption>
-								</figure>
-							</div>
+								<p>We go one level deeper and analyze how much of the total time is spent on each step percentage-wise.</p>
+								<div style="display: flex; justify-content: center; align-items: center; margin: 2em 0 2em 0;">
+									<figure style="flex: 1; margin-right: 10px; text-align: center;">
+										<img src="images/excelvspython/breakdown_excel.png" alt="Excel vs. Python Line Plot Comparison" style="width: 100%; height: auto;"/>
+										<figcaption>Figure 3: Proportional Time Spent on Each Operation in Excel by Row Volume.</figcaption>
+									</figure>
+									<figure style="flex: 1; margin-left: 10px; text-align: center;">
+										<img src="images/excelvspython/breakdown_python.png" alt="How many times slower?" style="width: 100%; height: auto;"/>
+										<figcaption>Figure 4: Proportional Time Spent on Each Operation in Python by Row Volume.</figcaption>
+									</figure>
+								</div>
 							
-							<ul>
-								<li>Figure 3 indicates that the time taken to open and save an Excel file may account for more than 40% of the total task duration, depending on the number of rows in the dataframes.</li>
-								<li>Figure 4 demonstrates that, on average, saving the results as a .csv file consumes more than 80% of the total processing time.</li>							
-							</ul>
+								<ul>
+									<li>Figure 3 indicates that the time taken to open and save an Excel file may account for more than 40% of the total task duration, depending on the number of rows in the dataframes.</li>
+									<li>And that for Python (Figure 4), on average, saving the results as a .csv file consumes more than 80% of the total processing time.</li>							
+								</ul>
 
+							<h2>Takeaways:</h2>
+
+							<p>Starting with the lessons learned with this exercise:</p>
+							<ul>
+								<li>Excel's Power Query is on average 10 times slower than Python for the same task.</li>
+								<li>In Python, saving data to a .csv file can take up to 80% of the total time. So being mindful of when and how often you save data can greatly affect the performance of a data manipulation task.</li>
+								<li>Contrary to my initial intuition, loading and merging data takes less time than opening files and saving results for both methods.</li>
+							</ul>
+							<figure style="flex: 1; margin-right: 10px; text-align: center;">
+								<img src="images/excelvspython/takeaways.png" alt="Key Takeaways" style="width: 50%; height: auto;"/>
+							</figure>
 
 						</div>
 					</div>
