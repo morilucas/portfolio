@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-56CH9Q34BG');
+		</script>
+
+		<title>Mayer Multiple</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>	
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Home</span>
+								</a>
+							
+							<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="excelvspython.html">Excel vs. Python</a></li>
+						<li><a href="mayer.html">Mayer Multiple</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+				<div id="main">
+					<div class="inner"> <!-- Adjust as needed -->
+						<h1>Mayer Multiple</h1>
+						<div class="content" style="display: flex;">
+							<div class="info" style="width: 20%;"> <!-- Adjust as needed -->
+								<select id="cryptoSelect" onchange="fetchAndDisplayMayerMultiple()" style="margin-bottom: 40px;">
+									<option value="bitcoin">Bitcoin</option>
+									<option value="solana">Solana</option>
+									<option value="ethereum">Ethereum</option>
+								</select>
+								<p id="currentPrice">Current Price: Loading...</p>
+								<p id="currentMayer">Current Mayer Multiple: Loading...</p>
+							</div>
+							<div class="graph" style="width: 80%;"> <!-- Adjust as needed -->
+								<canvas id="mayerChart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					async function fetchAndDisplayMayerMultiple() {
+						const crypto = document.getElementById('cryptoSelect').value;
+						const apiUrl = `https://api.coingecko.com/api/v3/coins/${crypto}/market_chart?vs_currency=usd&days=230`;
+				
+						try {
+							const response = await axios.get(apiUrl);
+							const prices = response.data.prices; // Prices are [[timestamp, price], ...]
+							const mayerMultiples = [];
+							const labels = [];
+							let currentMayerMultiple = 0;
+							let currentPrice = 0;
+				
+							// Check that there are enough data points for analysis
+							if (prices.length > 200) {
+								for (let i = 200; i < prices.length; i++) {
+									const slice = prices.slice(i - 200, i);
+									const sum = slice.reduce((acc, p) => acc + p[1], 0);
+									const movingAverage = sum / 200;
+									const mayerMultiple = prices[i][1] / movingAverage;
+				
+									if (i === prices.length - 1) {
+										currentPrice = prices[i][1];
+										currentMayerMultiple = mayerMultiple;
+									}
+				
+									if (i >= prices.length - 30) {
+										mayerMultiples.push(mayerMultiple);
+										const date = new Date(prices[i][0]);
+										const monthAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+										labels.push(`${date.getDate()}/${monthAbbreviations[date.getMonth()]}/${String(date.getFullYear()).slice(-2)}`);
+				
+									}
+								}
+							}
+				
+							const ctx = document.getElementById('mayerChart').getContext('2d');
+							if (window.myChart) {
+								window.myChart.destroy(); // Destroy the old chart instance before creating a new one
+							}
+							window.myChart = new Chart(ctx, {
+								type: 'line',
+								data: {
+									labels: labels,
+									datasets: [{
+										label: 'Mayer Multiple',
+										data: mayerMultiples,
+										borderColor: '#F8991D',
+										tension: 0.1
+									}]
+								},
+								options: {
+									scales: {
+										y: {
+											beginAtZero: false
+										}
+									},
+									plugins: {
+										tooltip: {
+											callbacks: {
+												label: function(context) {
+													let label = '';
+													const mayerLabel = 'Mayer Multiple: ' + context.parsed.y.toFixed(2);
+													label += mayerLabel;
+													const priceLabel = 'Price: $' + prices[context.dataIndex + 200][1].toLocaleString();
+													label += '\n' + priceLabel;
+													return label;
+												}
+											}
+										}
+									},
+									legend: {
+										display: false
+									}
+								}
+				
+							});
+				
+							document.getElementById('currentPrice').innerHTML = `Current Price: <strong>$${currentPrice.toLocaleString('en-US', {maximumFractionDigits: 0})}</strong>`;
+							document.getElementById('currentMayer').innerHTML = `Current Mayer Multiple: <strong>${currentMayerMultiple.toFixed(2)}</strong>`;
+				
+						} catch (error) {
+							console.error(`Error fetching ${crypto} prices:`, error);
+							document.getElementById('currentPrice').innerText = 'Failed to load current price.';
+							document.getElementById('currentMayer').innerText = 'Failed to load Mayer Multiple.';
+						}
+					}
+				
+					document.addEventListener('DOMContentLoaded', function() {
+						const urlParams = new URLSearchParams(window.location.search);
+						const cryptoParam = urlParams.get('crypto');
+						if (cryptoParam) {
+							document.getElementById('cryptoSelect').value = cryptoParam;
+						}
+						fetchAndDisplayMayerMultiple(); // Ensure the page is fully loaded before making API calls
+					});
+				</script>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+								<li><a href="https://github.com/morilucas" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

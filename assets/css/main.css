@@ -2626,7 +2626,7 @@ input, select, textarea {
 					-moz-transition: opacity 0.5s ease;
 					-webkit-transition: opacity 0.5s ease;
 					-ms-transition: opacity 0.5s ease;
-					transition: opacity 0.5s ease;
+					transition: opacity 0.1s ease;
 					content: '';
 					display: block;
 					position: absolute;
@@ -2683,6 +2683,7 @@ input, select, textarea {
 
 				.tiles article > a:hover {
 					color: #ffffff !important;
+					font-weight: bold;
 				}
 
 				.tiles article > a h2 {
