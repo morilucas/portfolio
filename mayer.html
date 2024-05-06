@@ -75,9 +75,6 @@
 								<canvas id="mayerChart"></canvas>
 							</div>
 						</div>
-						<div class="">
-							<p>bla blab bla bla</p>
-						</div>
 					</div>
 				</div>
 
@@ -101,18 +98,15 @@
 									const sum = slice.reduce((acc, p) => acc + p[1], 0);
 									const movingAverage = sum / 200;
 									const mayerMultiple = prices[i][1] / movingAverage;
-				
+									currentPrice = prices[i][1]; // Assigning only the price, not the timestamp
 									if (i === prices.length - 1) {
-										currentPrice = prices[i][1];
 										currentMayerMultiple = mayerMultiple;
 									}
-				
+
 									if (i >= prices.length - 30) {
 										mayerMultiples.push(mayerMultiple);
 										const date = new Date(prices[i][0]);
-										const monthAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-										labels.push(`${date.getDate()}/${monthAbbreviations[date.getMonth()]}/${String(date.getFullYear()).slice(-2)}`);
-				
+										labels.push(date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: '2-digit' }));
 									}
 								}
 							}
@@ -145,21 +139,18 @@
 													let label = '';
 													const mayerLabel = 'Mayer Multiple: ' + context.parsed.y.toFixed(2);
 													label += mayerLabel;
-													const priceLabel = 'Price: $' + prices[context.dataIndex + 200][1].toLocaleString();
+													const priceLabel = 'Price: $' + prices[context.dataIndex + 201][1].toLocaleString('en-US', {maximumFractionDigits: 2});
 													label += '\n' + priceLabel;
 													return label;
 												}
 											}
 										}
-									},
-									legend: {
-										display: false
 									}
 								}
 				
 							});
 				
-							document.getElementById('currentPrice').innerHTML = `Current Price: <strong>$${currentPrice.toLocaleString('en-US', {maximumFractionDigits: 0})}</strong>`;
+							document.getElementById('currentPrice').innerHTML = `Current Price: <strong>$${currentPrice.toLocaleString('en-US', {maximumFractionDigits: 2})}</strong>`;
 							document.getElementById('currentMayer').innerHTML = `Current Mayer Multiple: <strong>${currentMayerMultiple.toFixed(2)}</strong>`;
 				
 						} catch (error) {
