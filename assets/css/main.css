@@ -3167,6 +3167,10 @@ input, select, textarea {
 	.graph {
 		width: 80%;
 	}
+
+	.content {
+		padding: 1em 0 0 0 ;
+	}
 		@media screen and (max-width: 736px) {
 
 			#main {
