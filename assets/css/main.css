@@ -3161,6 +3161,10 @@ input, select, textarea {
 				padding: 0em 0 4em 0 ;
 			}
 
+			#graph {
+				width: 100%; /* Take entire width */
+			}
+
 		}
 
 /* Footer */
