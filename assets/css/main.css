@@ -3155,16 +3155,29 @@ input, select, textarea {
 		padding: 0em 0 4em 0 ;	
 	}
 
+	/* Default styles */
+	.content{
+		display: flex;
+	}
+	.info {
+		width: 20%;
+	}
+	
+	.graph {
+		width: 80%;
+	}
 		@media screen and (max-width: 736px) {
 
 			#main {
 				padding: 0em 0 4em 0 ;
 			}
-
-			#graph {
-				width: 100%; /* Take entire width */
-			}
-
+			.content {
+				flex-direction: column; /* Stack items vertically */
+			  }
+			
+			  .info, .graph {
+				width: 100%; /* Use entire width */
+			  }
 		}
 
 /* Footer */
