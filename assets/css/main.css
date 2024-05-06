@@ -3172,7 +3172,7 @@ input, select, textarea {
 			#main {
 				padding: 0em 0 4em 0 ;
 			}
-			.content {
+			.interactivegraph {
 				flex-direction: column; /* Stack items vertically */
 			  }
 			
