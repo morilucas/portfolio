@@ -16,7 +16,7 @@
 		gtag('config', 'G-56CH9Q34BG');
 		</script>
 
-		<title>Mayer Multiple</title>
+		<title>Altcoin Beta</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -56,24 +56,23 @@
 
 				<!-- Main -->
 				<div id="main">
-					<div class="inner"> <!-- Adjust as needed -->
-						<h1>Mayer Multiple - Last 30 days</h1>
+					<div class="inner">
+						<h1>Altcoin Beta - Selected Altcoin vs. Bitcoin - Last 365 days</h1>
 						<div class="interactivegraph">
-							<div class="info"> <!-- Adjust as needed -->
-								<select id="cryptoSelect" onchange="fetchAndDisplayMayerMultiple()" style="margin-bottom: 40px;">
-									<option value="bitcoin">Bitcoin</option>
+							<div class="info">
+								<select id="cryptoDropdown" onchange="updatePlot()">
 									<option value="solana">Solana</option>
 									<option value="ethereum">Ethereum</option>
 								</select>
-								<p id="currentPrice">Current Price: Loading...</p>
-								<p id="currentMayer">Current Mayer Multiple: Loading...</p>
+								<p>Date Range:</p>
+								<p><strong id="dateRange">Loading...</strong></p>
+								<p>Slope: <strong id="slopeDisplay">Loading...</strong></p>
+								<p>R Squared: <strong id="rSquared">Loading...</strong></p>
+								<p>Linear Equation: y = <strong id="linearEquation">Loading...</strong></p>
 							</div>
-							<div class="graph"> <!-- Adjust as needed -->
-								<canvas id="mayerChart"></canvas>
+							<div class="graph">
+								<canvas id="scatterPlot"></canvas>
 							</div>
-						</div>
-						<div class="content">
-							How to Interpret: <a href="https://bitcoinjobs.com/mayer-multiple">bitcoinjobs.com/mayer-multiple</a>
 						</div>
 					</div>
 				</div>
@@ -90,7 +89,6 @@
 						</section>
 					</div>
 				</footer>
-
 			</div>
 
 		<!-- Scripts -->
@@ -99,9 +97,10 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/beta.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<script src="assets/js/mayer.js"></script> 
+			<script src="https://cdn.jsdelivr.net/npm/simple-statistics"></script>
 
 	</body>
 </html>

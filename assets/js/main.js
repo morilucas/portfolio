@@ -4,6 +4,34 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+// Define your menu items here
+var menuItems = [
+    { name: "Home", link: "index.html" },
+    { name: "Excel vs. Python", link: "excelvspython.html" },
+    { name: "Mayer Multiple", link: "mayer.html" },
+	{ name: "Altcoin Beta", link: "beta.html" }
+    // Add more items as needed
+];
+
+// Function to dynamically generate menu items
+function generateMenu() {
+    var menuList = document.getElementById("menu-list");
+    menuList.innerHTML = ""; // Clear existing menu items
+
+    // Loop through menuItems array and create <li> elements
+    menuItems.forEach(function(item) {
+        var listItem = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = item.link;
+        link.textContent = item.name;
+        listItem.appendChild(link);
+        menuList.appendChild(listItem);
+    });
+}
+
+// Call generateMenu function when the page loads
+window.onload = generateMenu;
+
 (function($) {
 
 	var	$window = $(window),
