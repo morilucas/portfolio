@@ -93,7 +93,15 @@
 							const labels = [];
 							let currentMayerMultiple = 0;
 							let currentPrice = 0;
-				
+							
+							function formatUTCDate(date) {
+								const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+								const year = date.getUTCFullYear().toString().slice(2); // Get last two digits of year
+								const month = monthNames[date.getUTCMonth()]; // Get month as a string
+								const day = date.getUTCDate().toString().padStart(2, '0'); // Ensure two-digit day
+								return `${month}-${day}-${year}`; // Return formatted date
+							}
+
 							// Check that there are enough data points for analysis
 							if (prices.length > 200) {
 								for (let i = 200; i < prices.length; i++) {
@@ -109,7 +117,7 @@
 									if (i >= prices.length - 30) {
 										mayerMultiples.push(mayerMultiple);
 										const date = new Date(prices[i][0]);
-										const formattedDate = date.toISOString().slice(0, 10); // YYYY-MM-DD format
+										const formattedDate = formatUTCDate(date); // YYYY-MM-DD format
 										labels.push(formattedDate);
 									}
 								}
