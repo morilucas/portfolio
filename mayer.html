@@ -109,7 +109,8 @@
 									if (i >= prices.length - 30) {
 										mayerMultiples.push(mayerMultiple);
 										const date = new Date(prices[i][0]);
-										labels.push(date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: '2-digit' }));
+										const formattedDate = date.toISOString().slice(0, 10); // YYYY-MM-DD format
+										labels.push(formattedDate);
 									}
 								}
 							}
