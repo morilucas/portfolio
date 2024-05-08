@@ -7,9 +7,9 @@
 // Define your menu items here
 var menuItems = [
     { name: "Home", link: "index.html" },
-    { name: "Excel vs. Python", link: "excelvspython.html" },
     { name: "Mayer Multiple", link: "mayer.html" },
-	{ name: "Altcoin Beta", link: "beta.html" }
+	{ name: "Altcoin Beta", link: "beta.html" },
+	{ name: "Excel vs. Python", link: "excelvspython.html" }
     // Add more items as needed
 ];
 
