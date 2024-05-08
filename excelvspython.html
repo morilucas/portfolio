@@ -59,10 +59,20 @@
 							<h1>Excel vs Python: Data Handling Experiment</h1>
 								<p>In the final phase of my career as a financial planner and corporate finance practitioner, I heavily relied on Excel. It served as my go-to for not only data manipulation but also financial modeling, dashboard creation, note-taking, and project planning. However, transitioning into data science introduced me to Python's superior speed and efficiency in managing data—a potential I had always heard about but never integrated into my toolkit.</p>
 								<p>In this analysis, I aim to conduct a head-to-head comparison between Excel’s Power Query, a robust tool for data manipulation, and Python’s Pandas library. This comparison will focus on a task that was commonly encountered in my workflow: loading datasets, merging and transforming them and saving the results.</p>
-								<p>My goal is to provide valuable insights for those considering the integration of Python into their data handling processes.</p>
 								<p>You can find the files for this analysis here: <a href="https://github.com/morilucas/excelvspython">Github Repository</a>.</p>
 								<p><strong>Tools Used:</strong> Python, Pandas, Excel, Power Query, Seaborn</p>
 						
+							<h2>Takeaways:</h2>
+							<p>Starting with the takeaways from the analysis:</p>
+							<ul>
+								<li>Excel's Power Query is on average 10 times slower than Python for the same task.</li>
+								<li>In Python, saving data to a .csv file can take up to 80% of the total time. So being mindful of when and how often you save data can greatly affect the performance of a data manipulation task.</li>
+								<li>Contrary to my initial intuition, loading and merging data takes less time than opening files and saving results for both methods.</li>
+							</ul>
+							<figure style="flex: 1; margin-right: 10px; text-align: center;">
+								<img src="images/excelvspython/takeaways.png" alt="Key Takeaways" style="width: 50%; height: auto;"/>
+							</figure>
+
 							<h2>Approach:</h2>
 						
 								<p><span class="image right"><img src="images/excelvspython/experiment.png" alt="" /></span>The general plan involve two broad steps: 1. Generate Datasets -a Python script will generate two datasets, each with a flexible number of rows, allowing us to analyze how both methods perform as the number of rows increases; 2. Merge and save - an excel spreadsheet and a python script that will perform the same task of loading the data, merging the two datasets, and saving the results.</p>
@@ -126,17 +136,6 @@
 									<li>Figure 3 indicates that the time taken to open and save an Excel file may account for more than 40% of the total task duration, depending on the number of rows in the dataframes.</li>
 									<li>And that for Python (Figure 4), on average, saving the results as a .csv file consumes more than 80% of the total processing time.</li>							
 								</ul>
-
-							<h2>Takeaways:</h2>
-							<ul>
-								<li>Excel's Power Query is on average 10 times slower than Python for the same task.</li>
-								<li>In Python, saving data to a .csv file can take up to 80% of the total time. So being mindful of when and how often you save data can greatly affect the performance of a data manipulation task.</li>
-								<li>Contrary to my initial intuition, loading and merging data takes less time than opening files and saving results for both methods.</li>
-							</ul>
-							<figure style="flex: 1; margin-right: 10px; text-align: center;">
-								<img src="images/excelvspython/takeaways.png" alt="Key Takeaways" style="width: 50%; height: auto;"/>
-							</figure>
-
 						</div>
 					</div>
 
