@@ -3152,7 +3152,7 @@ input, select, textarea {
 /* Main */
 
 	#main {
-		padding: 0em 0 2em 0 ;	
+		padding: 0em 0 2em 0;	
 	}
 
 	/* Default styles */
@@ -3163,31 +3163,32 @@ input, select, textarea {
 	.info {
 		width: 20%;
 	}
-	
+
 	.graph {
 		width: 80%;
 	}
 
 	.content {
-		padding: 1em 0 0 0 ;
+		padding: 1em 0 0 0;
 	}
-		@media screen and (max-width: 736px) {
 
-			#main {
-				padding: 0em 0 4em 0 ;
-			}
-			.interactivegraph {
-				flex-direction: column; /* Stack items vertically */
-			  }
-			
-			  .info {
-				width: 100%; /* Use entire width */
-			  }
-			  
-			  .graph {
-				width: 100%; /* Use entire width */
-			  }
+	@media screen and (max-width: 736px) {
+		#main {
+			padding: 0em 0 4em 0;
 		}
+		.interactivegraph {
+			flex-direction: column; /* Stack items vertically */
+		}
+	
+		.info {
+			width: 100%; /* Use entire width */
+		}
+	
+		.graph {
+			width: 100%; /* Use entire width */
+			height: 400px; /* Set a larger height for better visibility on small screens */
+		}
+	}
 
 /* Footer */
 
