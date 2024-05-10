@@ -73,8 +73,9 @@
 						</div>
 						<div class="content">
 							<h3>How it is Calculated</h3>
-							<p>The sentiment score for each headline is derived using the finBERT model. finBERT categorizes sentiments as Positive (+1), Negative (-1), or Neutral (0).</p>
+							<p>Averages the results of the sentiment analysis performed by the model finBERT (HuggingFace Library) on the headlines of 5 popular crypto news outlets.</p>
 							<h3>Approach</h3>
+							<p>Steps 1 to 3 are performed by a worflow in GitHub Actions that runs multiple scripts daily at 00:00:00 UTC.</p>
 								<img src="images/crypto_sentiment/approach.png" alt="" width="600" style="display: block; margin: auto; margin-bottom: 20px;">
 							<ol>
 								<li>
@@ -88,6 +89,11 @@
 								</li>
 								<li>
 									<strong>Store Results:</strong> The results are aggregated and stored in a CSV file in a public repository.
+									<ul>
+										<li>
+											Calculates the average sentiment per day with the following categories Positive (+1), Negative (-1), or Neutral (0).
+										</li>
+									</ul>
 								</li>
 								<li>
 									<strong>Display on Dashboard:</strong> This webpage retrieves the stored scores, fetches the daily Bitcoin prices using coinGecko free API, and updates the corresponding graph.
