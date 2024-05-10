@@ -19,7 +19,7 @@ function getPriceChanges(cryptoSymbol, days, callback) {
             const prices = data.prices;
             const startDate = new Date(prices[0][0]).toLocaleDateString();
             const endDate = new Date(prices[prices.length - 1][0]).toLocaleDateString();
-            document.getElementById('dateRange').textContent = `${startDate} - ${endDate}`;
+            document.getElementById('dateRange').textContent = `Date Range: ${startDate} - ${endDate}`;
             const priceChanges = [];
             for (let i = 1; i < prices.length; i++) {
                 const prevPrice = prices[i - 1][1];
@@ -51,8 +51,7 @@ function createScatterPlot(bitcoinPriceChanges, altcoinPriceChanges) {
 
     const correlationCoefficient = ss.sampleCorrelation(bitcoinPriceChanges, altcoinPriceChanges);
     const rSquared = correlationCoefficient ** 2;
-    document.getElementById('rSquared').textContent = `${rSquared.toFixed(2)}`;
-    document.getElementById('linearEquation').textContent = `${regressionLine.m.toFixed(2)}x + ${regressionLine.b.toFixed(2)}`;
+    document.getElementById('linearEquation').textContent = `Lin. Equation: y = ${regressionLine.m.toFixed(2)}x + ${regressionLine.b.toFixed(2)}, R Squared: ${rSquared.toFixed(2)} `;
 
     if (window.chartInstance) {
         window.chartInstance.destroy();

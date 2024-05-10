@@ -3158,6 +3158,7 @@ input, select, textarea {
 	/* Default styles */
 	.interactivegraph{
 		display: flex;
+		height:430px;
 	}
 
 	.info {
@@ -3192,7 +3193,7 @@ input, select, textarea {
 	
 		.graph {
 			width: 100%; /* Use entire width */
-			height: 400px; /* Set a larger height for better visibility on small screens */
+			height: 300px; /* Set a larger height for better visibility on small screens */
 		}
 		
 		.mainChart {
