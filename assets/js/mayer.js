@@ -67,7 +67,9 @@ async function fetchAndDisplayMayerMultiple() {
                                 let label = '';
                                 const mayerLabel = 'Mayer Multiple: ' + context.parsed.y.toFixed(2);
                                 label += mayerLabel;
-                                const priceLabel = 'Price: $' + prices[context.dataIndex + 200][1].toLocaleString('en-US', {maximumFractionDigits: 2});
+                                // Ensure we do not go out of bounds or reference incorrect data
+                                const priceIndex = context.dataIndex + (prices.length - mayerMultiples.length);
+                                const priceLabel = 'Price: $' + prices[priceIndex][1].toLocaleString('en-US', {maximumFractionDigits: 2});
                                 label += '\n' + priceLabel;
                                 return label;
                             }
