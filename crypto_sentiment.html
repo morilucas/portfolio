@@ -61,7 +61,7 @@
 						<div class="interactivegraph">
 							<div class="info">
 								<strong>About this Indicator:</strong><br>
-								<p>Analyzes the overarching sentiment of headlines from cryptocurrency news outlets using finBERT, a sentiment analysis model specifically designed for financial contexts.</p>
+								<p>Analyzes the average sentiment of headlines from cryptocurrency news outlets using finBERT, a sentiment analysis model specifically designed for financial contexts.</p>
 								<ul class="icons">
 									<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style1 fa-linkedin"><span class="label">Twitter</span></a></li>
 									<li><a href="https://github.com/morilucas" class="icon brands style1 fa-github"><span class="label">Github</span></a></li>
@@ -72,6 +72,38 @@
 							</div>
 						</div>
 						<div class="content">
+							<h3>How it is Calculated</h3>
+							<p>The sentiment score for each headline is derived using the finBERT model. finBERT categorizes sentiments as Positive (+1), Negative (-1), or Neutral (0).</p>
+    
+							<h3>Approach</h3>
+							<ol>
+								<li>
+									<strong>Scrape:</strong> The top 5 crypto-only news sites are scraped using the BeautifulSoup library in Python, capturing the headlines from their home pages.
+									<ul>
+										<li>Websites: CoinDesk, Decrypt, Blockworks, BeInCrypto, U.Today</li>
+									</ul>
+								</li>
+								<li>
+									<strong>Sentiment Analysis:</strong> Headlines are analyzed using the finBERT model provided by Hugging Face.
+								</li>
+								<li>
+									<strong>Store Results:</strong> The results are aggregated and stored in a CSV file in a public repository.
+								</li>
+								<li>
+									<strong>Display on Dashboard:</strong> This webpage retrieves the stored scores, fetches the daily Bitcoin prices using coinGecko free API, and updates the corresponding graph.
+								</li>
+							</ol>
+							
+							All the code of this project can be found in these two Github Repositories:
+							<ul>
+								<li>Scripts to Scrape, Sentiment Analysis and Aggregations: <a href="https://github.com/morilucas/crypto_news">morilucas/crypto_news</a></li>
+								<li>This webpage: <a href="https://github.com/morilucas/portfolio">morilucas/portfolio</a></li>
+							</ul>  
+
+							<h3>Skills for This Project:</h3>
+							<p>Python, HTML, JavaScript, CSS, Git, finBERT, Hugging Face, BeautifulSoup</p>
+						
+						
 						</div>
 					</div>
 				</div>
