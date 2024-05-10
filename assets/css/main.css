@@ -3172,6 +3172,12 @@ input, select, textarea {
 		padding: 1em 0 0 0;
 	}
 
+	.mainChart {
+		width: 100% !important;  /* Ensures it takes the full width of its container */
+		height: 100% !important; /* Ensures it takes the full height of its container */
+		display: block;          /* Avoids inline default of canvas, which can cause issues */
+	}
+
 	@media screen and (max-width: 736px) {
 		#main {
 			padding: 0em 0 4em 0;
@@ -3187,6 +3193,12 @@ input, select, textarea {
 		.graph {
 			width: 100%; /* Use entire width */
 			height: 400px; /* Set a larger height for better visibility on small screens */
+		}
+		
+		.mainChart {
+			width: 100% !important;  /* Ensures it takes the full width of its container */
+			height: 100% !important; /* Ensures it takes the full height of its container */
+			display: block;          /* Avoids inline default of canvas, which can cause issues */
 		}
 	}
 
