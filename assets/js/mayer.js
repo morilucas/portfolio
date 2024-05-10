@@ -55,6 +55,8 @@ async function fetchAndDisplayMayerMultiple() {
                 }]
             },
             options: {
+                responsive: true, // Ensure the chart sizes down/up appropriately for the container
+                maintainAspectRatio: false, // Remove aspect ratio maintenance to fill container height
                 scales: {
                     y: {
                         beginAtZero: false
