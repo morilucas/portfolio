@@ -57,7 +57,7 @@
 				<!-- Main -->
 				<div id="main">
 					<div class="inner"> <!-- Adjust as needed -->
-						<h1>Mayer Multiple - Last 30 days</h1>
+						<h1>Mayer Multiple</h1>
 						<div class="interactivegraph">
 							<div class="info"> <!-- Adjust as needed -->
 								<select id="cryptoSelect" onchange="fetchAndDisplayMayerMultiple()" style="margin-bottom: 40px;">
@@ -77,16 +77,29 @@
 							</div>
 						</div>
 						<div class="content">
-							<h2>What is the Mayer Multiple?</h2>
+							<h2>About the Mayer Multiple</h2>
 							<p>The Mayer Multiple is a financial metric used to analyze the current price of Bitcoin and other altcoins relative to their long-term moving average. It is calculated by dividing the current price of the coin by its 200-day moving average.</p>
 							
-							<h2>Understanding the Dashboard:</h2>
+							<h2>How to interpret</h2>
 							<ol>
 								<li><strong>Current Mayer Multiple:</strong> This number shows the ratio of the current price to the 200-day moving average. A value greater than 1 indicates that the price is currently above the historical average, suggesting bullish conditions, while a value less than 1 suggests bearish conditions.</li>
 								<li><strong>Historical Trends:</strong> The dashboard displays historical data on the Mayer Multiple. Look for patterns in how the Mayer Multiple correlates with price peaks and troughs to gauge market sentiment over time.</li>
 								<li><strong>Comparative Analysis:</strong> Compare the Mayer Multiples across different cryptocurrencies. Coins with a higher Mayer Multiple might be experiencing relatively stronger upward price momentum compared to those with a lower multiple.</li>
 								<li><strong>Actionable Insights:</strong> Use the Mayer Multiple in conjunction with other indicators to make informed investment decisions. A high Mayer Multiple could suggest a potential sell signal if historically it aligns with overbought conditions, while a low Mayer Multiple might indicate a buying opportunity if it aligns with historical market bottoms.</li>
 							</ol>
+							<h2>Approach</h2>
+							<ol>
+								<li><strong>Get prices</strong> - Fetch daily prices from the CoinGecko API with JavaScript</li>
+								<li><strong>Calculate Mayer Multiple</strong> - Mayer Multiple =  Current Price / 200-day moving average</li>
+								<li><strong>Line Plot</strong> - Plot the Mayer Multiple of the selected asset</li>
+							</ol>
+
+							<h3>Implementation:</h3>
+							<ul>
+								<li><strong>Code:</strong> <a href="https://github.com/morilucas/portfolio/blob/main/mayer.html">link to file on GitHub</a></li>
+								<li><strong>Skills:</strong> Web Development, Crypto, API connections</li>
+								<li><strong>Programming Languages:</strong> HTML, JavaScript, CSS, Git</li>
+							</ul>
 						</div>
 					</div>
 				</div>
