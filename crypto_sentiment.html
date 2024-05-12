@@ -61,7 +61,7 @@
 						<div class="interactivegraph">
 							<div class="info">
 								<strong>About this Indicator:</strong><br>
-								<p>Analyzes the average sentiment of headlines from cryptocurrency news outlets using finBERT, a sentiment analysis model specifically designed for financial contexts.</p>
+								<p>Average sentiment of headlines from cryptocurrency news outlets using finBERT, a large language model for extracting information from financial text</p>
 								<ul class="icons">
 									<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style1 fa-linkedin"><span class="label">Twitter</span></a></li>
 									<li><a href="https://github.com/morilucas" class="icon brands style1 fa-github"><span class="label">Github</span></a></li>
@@ -72,37 +72,36 @@
 							</div>
 						</div>
 						<div class="content">
-							<h3>How it is Calculated</h3>
-							<p>Averages the results of the sentiment analysis performed by the model finBERT (HuggingFace Library) on the headlines of 5 popular crypto news outlets.</p>
 							<h3>Approach</h3>
-							<p>Steps 1 to 3 are performed by a worflow in GitHub Actions that runs multiple scripts daily at 00:00:00 UTC.</p>
 								<img src="images/crypto_sentiment/approach.png" alt="" width="600" style="display: block; margin: auto; margin-bottom: 20px;">
 							<ol>
 								<li>
 									<strong>Scrape:</strong> The top 5 crypto-only news sites are scraped using the BeautifulSoup library in Python, capturing the headlines from their home pages.
 									<ul>
 										<li>Websites: CoinDesk, Decrypt, Blockworks, BeInCrypto, U.Today</li>
+										<li>File with extracted headlines: <a href="https://github.com/morilucas/crypto_news/blob/master/scraped_data.csv">link to file</a></li>
 									</ul>
 								</li>
 								<li>
-									<strong>Sentiment Analysis:</strong> Headlines are analyzed using the finBERT model provided by Hugging Face.
-								</li>
-								<li>
-									<strong>Store Results:</strong> The results are aggregated and stored in a CSV file in a public repository.
+									<strong>Sentiment Analysis:</strong> Headlines are analyzed using the finBERT model provided by Hugging Face. 
 									<ul>
-										<li>
-											Calculates the average sentiment per day with the following categories Positive (+1), Negative (-1), or Neutral (0).
-										</li>
+										<li>File with additional info - stored as new columns of the .csv file: <a href="https://github.com/morilucas/crypto_news/blob/master/scraped_data_w_sentiment.csv">link to file</a></li>
 									</ul>
 								</li>
 								<li>
-									<strong>Display on Dashboard:</strong> This webpage retrieves the stored scores, fetches the daily Bitcoin prices using coinGecko free API, and updates the corresponding graph.
+									<strong>Store Results:</strong> The average sentiment is calculated and stored in a CSV file in a public repository that can be accessed by this wepage.
+									<ul>
+										<li>Calculates the average sentiment per day with the following categories Positive (+1), Negative (-1), or Neutral (0).</li>
+										<li>File with calculated averages: <a href="https://github.com/morilucas/crypto_news/blob/master/mean_and_count_per_day.csv">link to file</a></li>
+									</ul>
+								</li>
+								<li>
+									<strong>Display on Dashboard:</strong> This webpage retrieves the stored scores, fetches the daily Bitcoin prices using coinGecko free API, and updates the graph above.
 								</li>
 							</ol>
-							
-							All the code of this project can be found in these two Github Repositories:
+							A GitHub Actions workflow is configured to execute steps 1 through 3 daily at 00:00:00 UTC. The complete codebase for this project is available across two GitHub repositories:
 							<ul>
-								<li>Scripts to Scrape, Sentiment Analysis and Aggregations: <a href="https://github.com/morilucas/crypto_news">morilucas/crypto_news</a></li>
+								<li>Scripts to Scrape, Sentiment Analysis, Aggregations, Github Actions Worflow: <a href="https://github.com/morilucas/crypto_news">morilucas/crypto_news</a></li>
 								<li>This webpage: <a href="https://github.com/morilucas/portfolio">morilucas/portfolio</a></li>
 							</ul>  
 
