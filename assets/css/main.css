@@ -3155,7 +3155,7 @@ input, select, textarea {
 	/* Default styles */
 	.interactivegraph{
 		display: flex;
-		height:430px;
+		height:500px;
 	}
 
 	.info {
