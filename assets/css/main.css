@@ -2586,6 +2586,10 @@ input, select, textarea {
 			margin: 2.5em 0 0 2.5em;
 		}
 
+		.tiles article:nth-child(-n+4) {
+			margin-top: 0; /* Remove top margin for the first row (first 4 tiles) */
+		}
+
 			.tiles article > .image {
 				-moz-transition: -moz-transform 0.5s ease;
 				-webkit-transition: -webkit-transform 0.5s ease;
