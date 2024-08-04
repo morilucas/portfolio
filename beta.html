@@ -1,137 +1,247 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-		gtag('config', 'G-56CH9Q34BG');
-		</script>
+      gtag("config", "G-56CH9Q34BG");
+    </script>
 
-		<title>Altcoin Beta</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <title>Altcoin Beta</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo.svg" alt="" /></span
+            ><span class="title">Home</span>
+          </a>
 
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul id="menu-list">
+          <!-- Menu items will be generated dynamically here -->
+        </ul>
+      </nav>
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Home</span>
-								</a>
-							
-							<!-- Nav -->
-							<nav>
-								<ul>
-									<li><a href="#menu">Menu</a></li>
-								</ul>
-							</nav>
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>Altcoin Beta</h1>
+          <div class="interactivegraph">
+            <div class="info">
+              <select id="cryptoDropdown" onchange="updatePlot()">
+                <option value="solana">Solana</option>
+                <option value="ethereum">Ethereum</option>
+              </select>
+              <p>Beta: <strong id="slopeDisplay">Loading...</strong></p>
+              <p id="linearEquation">Reg. Equation: Loading...</p>
+              <p id="dateRange">Date: Loading...</p>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/morilucas/"
+                    class="icon brands style1 fa-linkedin"
+                    ><span class="label">Twitter</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/morilucas"
+                    class="icon brands style1 fa-github"
+                    ><span class="label">Github</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="graph">
+              <canvas id="scatterPlot" class="mainChart"></canvas>
+            </div>
+          </div>
+          <div class="content">
+            <hr />
+            <h2>About Beta</h2>
+            <p>
+              If you're familiar with finance concepts, you've likely
+              encountered the term "beta." As defined by
+              <a
+                href="https://www.investopedia.com/terms/b/beta.asp#:~:text=Beta%20(%CE%B2)%20is%20a%20measure,volatile%20than%20the%20S%26P%20500."
+                >Investopedia</a
+              >, beta (β) measures the volatility—or systematic risk—of a
+              security or a portfolio in comparison to the market as a whole,
+              typically benchmarked against the S&P 500. Securities with betas
+              higher than 1.0 are considered more volatile than the market.
+            </p>
+            <p>
+              In this project, I explore the concept of beta within the altcoin
+              sphere, aiming to determine how the volatility of an altcoin
+              compares to that of Bitcoin, which serves as the crypto world's
+              benchmark.
+            </p>
+            <blockquote>
+              The beta coefficient measures an altcoin's volatility relative to
+              the established benchmark, Bitcoin. Statistically, it represents
+              the slope of the regression line that correlates the returns of
+              the altcoin with those of Bitcoin. This metric is crucial for
+              understanding how movements in an altcoin are linked to
+              fluctuations in Bitcoin.
+            </blockquote>
 
-						</div>
-					</header>
+            <hr />
+            <h2>How to interpret</h2>
+            <p>
+              Let’s consider a scenario where Bitcoin has a daily return of
+              +10%:
+            </p>
+            <ul>
+              <li>
+                <strong>Beta Value Equal to 1.0:</strong> If an altcoin like
+                Ethereum or Solana shows a beta of 1.0 against Bitcoin, it
+                indicates a strong correlation with Bitcoin's price movements.
+                For a Bitcoin return of +10%, such an altcoin would also likely
+                see a +10% return.
+              </li>
+              <li>
+                <strong>Beta Value Less Than One:</strong> An altcoin with a
+                beta less than 1.0 is considered less volatile compared to
+                Bitcoin.Let's consider a beta of 0.8 for example: this altcoin
+                would expect a return of around +8% (smaller magnitude but same
+                direction).
+              </li>
+              <li>
+                <strong>Beta Value Greater Than One:</strong> An altcoin with a
+                beta greater than 1.0 is more volatile relative to Bitcoin. For
+                instance, if Solana has a beta of 1.2, it could be expected to
+                increase by +12% in our scenario, reflecting 20% greater
+                volatility than Bitcoin.
+              </li>
+              <li>
+                <strong>Negative Beta Value:</strong> Although less common, some
+                altcoins may exhibit a negative beta relative to Bitcoin,
+                indicating an inverse correlation. An altcoin with a beta of
+                -1.0 would typically move in the opposite direction to Bitcoin,
+                similar to financial instruments like put options or inverse
+                ETFs in traditional markets.
+              </li>
+            </ul>
 
-				<!-- Menu -->
-				<nav id="menu">
-					<h2>Menu</h2>
-					<ul id="menu-list">
-						<!-- Menu items will be generated dynamically here -->
-					</ul>
-				</nav>
+            <hr />
+            <h3>Approach</h3>
+            <ol>
+              <li>
+                <strong>Get prices</strong> - Fetch daily prices from the
+                CoinGecko API with JavaScript
+              </li>
+              <li>
+                <strong>Calculate daily returns</strong> - Return = Current
+                Price / Previous Price
+              </li>
+              <li>
+                <strong>Scatter Plot</strong> - Plot the daily returns of the
+                altcoin against Bitcoin
+              </li>
+              <li>
+                <strong>Linear Regression</strong> - Fit a line through the
+                points, get the equation and the Beta value - the slope of the
+                line
+              </li>
+            </ol>
 
-				<!-- Main -->
-				<div id="main">
-					<div class="inner">
-						<h1>Altcoin Beta</h1>
-						<div class="interactivegraph">
-							<div class="info">
-								<select id="cryptoDropdown" onchange="updatePlot()">
-									<option value="solana">Solana</option>
-									<option value="ethereum">Ethereum</option>
-								</select>
-								<p>Beta: <strong id="slopeDisplay">Loading...</strong></p>
-								<p id="linearEquation">Reg. Equation: Loading...</p>
-								<p id="dateRange">Date: Loading...</p>
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style1 fa-linkedin"><span class="label">Twitter</span></a></li>
-									<li><a href="https://github.com/morilucas" class="icon brands style1 fa-github"><span class="label">Github</span></a></li>
-								</ul>
-							</div>
-							<div class="graph">
-								<canvas id="scatterPlot" class = "mainChart"></canvas>
-							</div>
-						</div>
-						<div class="content">
-							<h2>About Beta</h2>
-							<p>If you're familiar with finance concepts, you've likely encountered the term "beta." As defined by <a href="https://www.investopedia.com/terms/b/beta.asp#:~:text=Beta%20(%CE%B2)%20is%20a%20measure,volatile%20than%20the%20S%26P%20500.">Investopedia</a>, beta (β) measures the volatility—or systematic risk—of a security or a portfolio in comparison to the market as a whole, typically benchmarked against the S&P 500. Securities with betas higher than 1.0 are considered more volatile than the market.</p>
-							<p>In this project, I explore the concept of beta within the altcoin sphere, aiming to determine how the volatility of an altcoin compares to that of Bitcoin, which serves as the crypto world's benchmark.</p>
-							<blockquote>The beta coefficient measures an altcoin's volatility relative to the established benchmark, Bitcoin. Statistically, it represents the slope of the regression line that correlates the returns of the altcoin with those of Bitcoin. This metric is crucial for understanding how movements in an altcoin are linked to fluctuations in Bitcoin.</blockquote>
-					
-							<h3>How to interpret</h3>
-							<p>Let’s consider a scenario where Bitcoin has a daily return of +10%:</p>
-							<ul>
-								<li><strong>Beta Value Equal to 1.0:</strong> If an altcoin like Ethereum or Solana shows a beta of 1.0 against Bitcoin, it indicates a strong correlation with Bitcoin's price movements. For a Bitcoin return of +10%, such an altcoin would also likely see a +10% return.</li>
-								<li><strong>Beta Value Less Than One:</strong> An altcoin with a beta less than 1.0 is considered less volatile compared to Bitcoin.Let's consider a beta of 0.8 for example: this altcoin would expect a return of around +8% (smaller magnitude but same direction).</li>
-								<li><strong>Beta Value Greater Than One:</strong> An altcoin with a beta greater than 1.0 is more volatile relative to Bitcoin. For instance, if Solana has a beta of 1.2, it could be expected to increase by +12% in our scenario, reflecting 20% greater volatility than Bitcoin.</li>
-								<li><strong>Negative Beta Value:</strong> Although less common, some altcoins may exhibit a negative beta relative to Bitcoin, indicating an inverse correlation. An altcoin with a beta of -1.0 would typically move in the opposite direction to Bitcoin, similar to financial instruments like put options or inverse ETFs in traditional markets.</li>
-							</ul>
+            <hr />
+            <h2>Implementation:</h2>
+            <ul>
+              <li>
+                <strong>Code:</strong>
+                <a
+                  href="https://github.com/morilucas/portfolio/blob/main/beta.html"
+                  >link to file on GitHub</a
+                >
+              </li>
+              <li>
+                <strong>Skills:</strong> Web Development, Crypto, API
+                connections, Corporate Finance, Valuation
+              </li>
+              <li>
+                <strong>Programming Languages:</strong> HTML, JavaScript, CSS,
+                Git
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-							<h3>Approach</h3>
-							<ol>
-								<li><strong>Get prices</strong> - Fetch daily prices from the CoinGecko API with JavaScript</li>
-								<li><strong>Calculate daily returns</strong> - Return =  Current Price / Previous Price</li>
-								<li><strong>Scatter Plot</strong> - Plot the daily returns of the altcoin against Bitcoin</li>
-								<li><strong>Linear Regression</strong> - Fit a line through the points, get the equation and the Beta value - the slope of the line</li>
-							</ol>
-							<h3>Implementation:</h3>
-							<ul>
-								<li><strong>Code:</strong> <a href="https://github.com/morilucas/portfolio/blob/main/beta.html">link to file on GitHub</a></li>
-								<li><strong>Skills:</strong> Web Development, Crypto, API connections, Corporate Finance, Valuation</li>
-								<li><strong>Programming Languages:</strong> HTML, JavaScript, CSS, Git</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/morilucas/"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/morilucas"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </footer>
+    </div>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<section>
-							<h2>Follow</h2>
-							<ul class="icons">
-								<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
-								<li><a href="https://github.com/morilucas" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-						</section>
-					</div>
-				</footer>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/beta.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/simple-statistics"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/beta.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-statistics"></script>
+  </body>
 </html>

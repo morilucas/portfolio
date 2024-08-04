@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-56CH9Q34BG");
+    </script>
+
+    <title>Scrape First</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo.svg" alt="" /></span
+            ><span class="title">Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul id="menu-list">
+          <!-- Menu items will be generated dynamically here -->
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>
+            How I Secured One of Three Slots in the Microsoft Minecraft Research
+            Group in Partnership with Purdue's The Data Mine for Fall 2024
+          </h1>
+          <p>Important Links:</p>
+		  <ul>
+			<li>
+			  <a href="https://datamine.purdue.edu/corporate/minecraft/" target="_blank">
+				Purdue Data Mine: Minecraft Research Group
+			  </a>
+			</li>
+			<li>
+			  <a href="https://github.com/morilucas/tdm_scraper" target="_blank">
+				Project's GitHub Repository
+			  </a>
+			</li>
+			<li>
+			  <a
+				href="https://selfservice.mypurdue.purdue.edu/prod/BZWSLCSR.P_Prep_Search?term_in=202510&crn_in=15774"
+				target="_blank"
+			  >
+				Purdue - Project listings
+			  </a>
+			</li>
+			<li>
+			  <a href="https://morilucas.github.io/portfolio/tdm.html" target="_blank">
+				Dashboard with new listings
+			  </a>
+			</li>
+		  </ul>		  
+
+          <hr />
+          <h2>About:</h2>
+          <p>
+            This project showcases the powerful combination of web scraping with
+            Beautiful Soup, automated tasks with GitHub Actions, and webpage
+            hosting with GitHub Pages. These techniques were instrumental in
+            securing one of three seats in the Microsoft
+            Minecraft research group, which is historically competitive due to
+            high student demand.
+          </p>
+          <p>
+            On May 15, 2024, we received an email from The Data Mine staff (see
+            Image 1 below) informing us that projects with corporate partners
+            would be listed on a rolling basis throughout the entire summer. We were
+            advised to monitor the website for newly added projects (see Image 2
+            below).
+          </p>
+
+          <blockquote>
+            "We add projects all summer and students should be watching for new
+            projects (…) We will not be communicating open projects to students
+            at this time as they are posting and filling quickly."
+          </blockquote>
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/tdm_email.png"
+              alt="Figure 1"
+              style="width: 60%; height: auto"
+            />
+            <figcaption>
+              Figure 1 - The Data Mine email about project listings.
+            </figcaption>
+          </figure>
+
+          <br />
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/projects_page.png"
+              alt="Figure 2"
+              style="width: 85%; height: auto"
+            />
+            <figcaption>
+              Figure 2 - Webpage with the listed projects.
+            </figcaption>
+          </figure>
+          <br />
+          <p>
+            Once I was accepted into the Data Mine pool of students, I knew that
+            project registration operated on a first-come, first-served basis.
+            To stay ahead, I built a website to serve as my homepage throughout
+            the summer. This allowed me to check for new project listings first
+            thing every morning. Whenever a Microsoft project was posted, I
+            would receive and see the daily updates on my website, enabling me
+            to secure a slot. And that's exactly what happened.
+          </p>
+
+          <hr />
+          <h2>Approach:</h2>
+          <ol>
+            <li>
+              <strong>Scrape</strong> the names of projects listed on the
+              website using BeautifulSoup and <strong>compare</strong> the names
+              to those stored in a CSV file (Figure 5 below) containing all
+              previously scraped names. If a name is new, flag it as new.
+            </li>
+            <ul>
+              <li>
+                Python script:
+                <a
+                  href="https://github.com/morilucas/tdm_scraper/blob/main/scraper.py"
+                  target="_blank"
+                  >link to file on GitHub</a
+                >
+              </li>
+            </ul>
+            <li>
+              <strong>Repeat</strong> this process daily at 00:00 UTC using a
+              GitHub Actions workflow.
+            </li>
+            <li>
+              <strong>Filter and load</strong> the flagged projects to the
+              website with JavaScript and HTML (Figure 6 below).
+            </li>
+            <ul>
+              <li>
+                Webpage code:
+                <a
+                  href="https://github.com/morilucas/portfolio/blob/main/tdm.html"
+                  target="_blank"
+                  >link to file on GitHub</a
+                >
+              </li>
+            </ul>
+          </ol>
+
+          <h3>Notes</h3>
+          <p>
+            For each project, a new section is added to the end of the project
+            listing webpage, with the project name stored in the "Notes" column.
+            By inspecting the page code, we can see that project names can be
+            selected by targeting rows tagged with the class "schdType1".
+          </p>
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/projects_page_1.png"
+              alt="Figure 3"
+              style="width: 85%; height: auto"
+            />
+            <figcaption>
+              Figure 3 - Projects page code - Row structure
+            </figcaption>
+          </figure>
+          <br />
+
+          <p>
+            In the next step, we extract the content of the last column in each
+            row, store it in a CSV file, and flag it if it is a new project. For
+            example, in Figure 4, we would store the value "AstraZeneca
+            (Application Advancement)" and mark "No" in the "New Entry" column
+            since it is already on the list.
+          </p>
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/projects_page_2.png"
+              alt="Figure 4"
+              style="width: 85%; height: auto"
+            />
+            <figcaption>
+              Figure 4 - Projects page code - Column with the project name
+            </figcaption>
+          </figure>
+          <br />
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/csv_flag.png"
+              alt="Figure 5"
+              style="width: 85%; height: auto"
+            />
+            <figcaption>
+              Figure 5 - CSV file tracking old and new projects at each run of
+              the scraping script.
+            </figcaption>
+          </figure>
+          <br />
+
+          <p>Finally, this information is displayed on the webpage:</p>
+
+          <figure style="flex: 1; margin-right: 10px; text-align: center">
+            <img
+              src="images/minecraft/webpage.png"
+              alt="Figure 6"
+              style="width: 85%; height: auto"
+            />
+            <figcaption>Figure 6 - Page with newly added projects.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/morilucas/"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/morilucas"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

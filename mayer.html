@@ -1,133 +1,223 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-		gtag('config', 'G-56CH9Q34BG');
-		</script>
+      gtag("config", "G-56CH9Q34BG");
+    </script>
 
-		<title>Mayer Multiple</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <title>Mayer Multiple</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo.svg" alt="" /></span
+            ><span class="title">Home</span>
+          </a>
 
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul id="menu-list">
+          <!-- Menu items will be generated dynamically here -->
+        </ul>
+      </nav>
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Home</span>
-								</a>
-							
-							<!-- Nav -->
-							<nav>
-								<ul>
-									<li><a href="#menu">Menu</a></li>
-								</ul>
-							</nav>
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <!-- Adjust as needed -->
+          <h1>Mayer Multiple</h1>
+          <div class="interactivegraph">
+            <div class="info">
+              <!-- Adjust as needed -->
+              <select
+                id="cryptoSelect"
+                onchange="fetchAndDisplayMayerMultiple()"
+                style="margin-bottom: 40px"
+              >
+                <option value="bitcoin">Bitcoin</option>
+                <option value="solana">Solana</option>
+                <option value="ethereum">Ethereum</option>
+              </select>
+              <p id="currentPrice">Current Price: Loading...</p>
+              <p id="currentMayer">Current Mayer Multiple: Loading...</p>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/morilucas/"
+                    class="icon brands style1 fa-linkedin"
+                    ><span class="label">Twitter</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/morilucas"
+                    class="icon brands style1 fa-github"
+                    ><span class="label">Github</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="graph">
+              <!-- Adjust as needed -->
+              <canvas id="mayerChart" class="mainChart"></canvas>
+            </div>
+          </div>
+          <div class="content">
+            <hr />
+            <h2>About the Mayer Multiple</h2>
+            <p>
+              The Mayer Multiple is a financial metric used to analyze the
+              current price of Bitcoin and other altcoins relative to their
+              long-term moving average. It is calculated by dividing the current
+              price of the coin by its 200-day moving average.
+            </p>
 
-						</div>
-					</header>
+            <hr />
+            <h2>How to interpret</h2>
+            <ol>
+              <li>
+                <strong>Current Mayer Multiple:</strong> This number shows the
+                ratio of the current price to the 200-day moving average. A
+                value greater than 1 indicates that the price is currently above
+                the historical average, suggesting bullish conditions, while a
+                value less than 1 suggests bearish conditions.
+              </li>
+              <li>
+                <strong>Historical Trends:</strong> The dashboard displays
+                historical data on the Mayer Multiple. Look for patterns in how
+                the Mayer Multiple correlates with price peaks and troughs to
+                gauge market sentiment over time.
+              </li>
+              <li>
+                <strong>Comparative Analysis:</strong> Compare the Mayer
+                Multiples across different cryptocurrencies. Coins with a higher
+                Mayer Multiple might be experiencing relatively stronger upward
+                price momentum compared to those with a lower multiple.
+              </li>
+              <li>
+                <strong>Actionable Insights:</strong> Use the Mayer Multiple in
+                conjunction with other indicators to make informed investment
+                decisions. A high Mayer Multiple could suggest a potential sell
+                signal if historically it aligns with overbought conditions,
+                while a low Mayer Multiple might indicate a buying opportunity
+                if it aligns with historical market bottoms.
+              </li>
+            </ol>
 
-				<!-- Menu -->
-				<nav id="menu">
-					<h2>Menu</h2>
-					<ul id="menu-list">
-						<!-- Menu items will be generated dynamically here -->
-					</ul>
-				</nav>
+            <hr />
+            <h2>Approach</h2>
+            <ol>
+              <li>
+                <strong>Get prices</strong> - Fetch daily prices from the
+                CoinGecko API with JavaScript
+              </li>
+              <li>
+                <strong>Calculate Mayer Multiple</strong> - Mayer Multiple =
+                Current Price / 200-day moving average
+              </li>
+              <li>
+                <strong>Line Plot</strong> - Plot the Mayer Multiple of the
+                selected asset
+              </li>
+            </ol>
 
-				<!-- Main -->
-				<div id="main">
-					<div class="inner"> <!-- Adjust as needed -->
-						<h1>Mayer Multiple</h1>
-						<div class="interactivegraph">
-							<div class="info"> <!-- Adjust as needed -->
-								<select id="cryptoSelect" onchange="fetchAndDisplayMayerMultiple()" style="margin-bottom: 40px;">
-									<option value="bitcoin">Bitcoin</option>
-									<option value="solana">Solana</option>
-									<option value="ethereum">Ethereum</option>
-								</select>
-								<p id="currentPrice">Current Price: Loading...</p>
-								<p id="currentMayer">Current Mayer Multiple: Loading...</p>
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style1 fa-linkedin"><span class="label">Twitter</span></a></li>
-									<li><a href="https://github.com/morilucas" class="icon brands style1 fa-github"><span class="label">Github</span></a></li>
-								</ul>
-							</div>
-							<div class="graph"> <!-- Adjust as needed -->
-								<canvas id="mayerChart" class = "mainChart"></canvas>
-							</div>
-						</div>
-						<div class="content">
-							<h2>About the Mayer Multiple</h2>
-							<p>The Mayer Multiple is a financial metric used to analyze the current price of Bitcoin and other altcoins relative to their long-term moving average. It is calculated by dividing the current price of the coin by its 200-day moving average.</p>
-							
-							<h2>How to interpret</h2>
-							<ol>
-								<li><strong>Current Mayer Multiple:</strong> This number shows the ratio of the current price to the 200-day moving average. A value greater than 1 indicates that the price is currently above the historical average, suggesting bullish conditions, while a value less than 1 suggests bearish conditions.</li>
-								<li><strong>Historical Trends:</strong> The dashboard displays historical data on the Mayer Multiple. Look for patterns in how the Mayer Multiple correlates with price peaks and troughs to gauge market sentiment over time.</li>
-								<li><strong>Comparative Analysis:</strong> Compare the Mayer Multiples across different cryptocurrencies. Coins with a higher Mayer Multiple might be experiencing relatively stronger upward price momentum compared to those with a lower multiple.</li>
-								<li><strong>Actionable Insights:</strong> Use the Mayer Multiple in conjunction with other indicators to make informed investment decisions. A high Mayer Multiple could suggest a potential sell signal if historically it aligns with overbought conditions, while a low Mayer Multiple might indicate a buying opportunity if it aligns with historical market bottoms.</li>
-							</ol>
-							<h2>Approach</h2>
-							<ol>
-								<li><strong>Get prices</strong> - Fetch daily prices from the CoinGecko API with JavaScript</li>
-								<li><strong>Calculate Mayer Multiple</strong> - Mayer Multiple =  Current Price / 200-day moving average</li>
-								<li><strong>Line Plot</strong> - Plot the Mayer Multiple of the selected asset</li>
-							</ol>
+            <hr />
+            <h3>Implementation:</h3>
+            <ul>
+              <li>
+                <strong>Code:</strong>
+                <a
+                  href="https://github.com/morilucas/portfolio/blob/main/mayer.html"
+                  >link to file on GitHub</a
+                >
+              </li>
+              <li>
+                <strong>Skills:</strong> Web Development, Crypto, API
+                connections
+              </li>
+              <li>
+                <strong>Programming Languages:</strong> HTML, JavaScript, CSS,
+                Git
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-							<h3>Implementation:</h3>
-							<ul>
-								<li><strong>Code:</strong> <a href="https://github.com/morilucas/portfolio/blob/main/mayer.html">link to file on GitHub</a></li>
-								<li><strong>Skills:</strong> Web Development, Crypto, API connections</li>
-								<li><strong>Programming Languages:</strong> HTML, JavaScript, CSS, Git</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/morilucas/"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/morilucas"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </footer>
+    </div>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<section>
-							<h2>Follow</h2>
-							<ul class="icons">
-								<li><a href="https://www.linkedin.com/in/morilucas/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
-								<li><a href="https://github.com/morilucas" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-						</section>
-					</div>
-				</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<script src="assets/js/mayer.js"></script> 
-
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/mayer.js"></script>
+  </body>
 </html>

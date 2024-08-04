@@ -1,86 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSV Data Display</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>CSV Data Display</h1>
     <p id="flagged-count"></p>
     <table id="flagged-table">
-        <thead>
-            <tr id="table-headers"></tr>
-        </thead>
-        <tbody id="table-body"></tbody>
+      <thead>
+        <tr id="table-headers"></tr>
+      </thead>
+      <tbody id="table-body"></tbody>
     </table>
 
     <script>
-        async function fetchCsvData(url) {
-            const response = await fetch(url);
-            const data = await response.text();
-            return data;
+      async function fetchCsvData(url) {
+        const response = await fetch(url);
+        const data = await response.text();
+        return data;
+      }
+
+      function parseCsv(data) {
+        const lines = data
+          .split("\n")
+          .map((line) => line.trim())
+          .filter((line) => line);
+        const headers = lines[0].split(",");
+        const rows = lines.slice(1).map((line) => line.split(","));
+        return { headers, rows };
+      }
+
+      function displayFlaggedData(headers, rows) {
+        const newEntryIndex = headers.indexOf("New Entry");
+        if (newEntryIndex === -1) {
+          console.error("New Entry column not found");
+          return;
         }
 
-        function parseCsv(data) {
-            const lines = data.split('\n').map(line => line.trim()).filter(line => line);
-            const headers = lines[0].split(',');
-            const rows = lines.slice(1).map(line => line.split(','));
-            return { headers, rows };
-        }
+        const flaggedRows = rows.filter(
+          (row) => row[newEntryIndex].trim() === "Yes"
+        );
+        const flaggedCount = flaggedRows.length;
 
-        function displayFlaggedData(headers, rows) {
-            const newEntryIndex = headers.indexOf("New Entry");
-            if (newEntryIndex === -1) {
-                console.error("New Entry column not found");
-                return;
-            }
+        document.getElementById(
+          "flagged-count"
+        ).textContent = `Number of items flagged as 'Yes': ${flaggedCount}`;
 
-            const flaggedRows = rows.filter(row => row[newEntryIndex].trim() === 'Yes');
-            const flaggedCount = flaggedRows.length;
+        const tableHeaders = document.getElementById("table-headers");
+        headers.forEach((header) => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          tableHeaders.appendChild(th);
+        });
 
-            document.getElementById('flagged-count').textContent = `Number of items flagged as 'Yes': ${flaggedCount}`;
+        const tableBody = document.getElementById("table-body");
+        flaggedRows.forEach((row) => {
+          const tr = document.createElement("tr");
+          row.forEach((cell) => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      }
 
-            const tableHeaders = document.getElementById('table-headers');
-            headers.forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                tableHeaders.appendChild(th);
-            });
+      async function init() {
+        const csvUrl =
+          "https://raw.githubusercontent.com/morilucas/tdm_scraper/main/schedule_data.csv";
+        const csvData = await fetchCsvData(csvUrl);
+        const { headers, rows } = parseCsv(csvData);
+        displayFlaggedData(headers, rows);
+      }
 
-            const tableBody = document.getElementById('table-body');
-            flaggedRows.forEach(row => {
-                const tr = document.createElement('tr');
-                row.forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell;
-                    tr.appendChild(td);
-                });
-                tableBody.appendChild(tr);
-            });
-        }
-
-        async function init() {
-            const csvUrl = 'https://raw.githubusercontent.com/morilucas/tdm_scraper/main/schedule_data.csv';
-            const csvData = await fetchCsvData(csvUrl);
-            const { headers, rows } = parseCsv(csvData);
-            displayFlaggedData(headers, rows);
-        }
-
-        window.onload = init;
+      window.onload = init;
     </script>
-</body>
+  </body>
 </html>

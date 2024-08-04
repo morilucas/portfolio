@@ -10,7 +10,8 @@ var menuItems = [
     { name: "Mayer Multiple", link: "mayer.html" },
 	{ name: "Altcoin Beta", link: "beta.html" },
 	{ name: "Excel vs. Python", link: "excelvspython.html" },
-	{ name: "Crypto Sentiment Score", link: "crypto_sentiment.html" }
+	{ name: "Crypto Sentiment Score", link: "crypto_sentiment.html" },
+	{ name: "Scrape First", link: "minecraft.html" }
     // Add more items as needed
 ];
 
