@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-56CH9Q34BG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-56CH9Q34BG");
+    </script>
+
+    <title>Single Camel</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo.svg" alt="" /></span
+            ><span class="title">Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul id="menu-list">
+          <!-- Menu items will be generated dynamically here -->
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>Single Camel</h1>
+          <div class="interactivegraph">
+            <div class="info">
+              <strong>Samsung S24 Renewed Average Price</strong>
+              <p>Starting Date: Aug 14th <br>
+                Source: Amazon <br>
+                Scraping time daily: UTC 00:15 <br>
+                Workflow Automation: GitHub Actions
+              </p>
+            </div>
+            <div class="graph">
+              <canvas id="linePlot" class="mainChart"></canvas>
+            </div>
+          </div>
+          <div class="content">
+            <hr />
+            <h2>Objective</h2>
+            <p>As a dedicated enthusiast of renewed electronic products and a loyal Samsung customer, I've noticed an interesting trend: the prices of renewed electronic products often move in the opposite direction compared to brand new ones. For instance, during popular shopping events like the 4th of July, Amazon Prime Day, and Black Friday, instead of dropping, the prices of renewed products tend to rise. I believe this occurs because the demand for products spikes during these sales, driven by discounts on new items, which in turn affects the pricing of renewed goods.
+              <br>
+              This observation leads me to a question:
+            </p>
+            <blockquote><strong>When is the best time to purchase the latest renewed Samsung flagship phone?</strong> <br>Answering this could provide valuable insights into the overall market for renewed products.</blockquote>
+            
+            <p>Inspired by the CamelCamelCamel website, which tracks Amazon item prices over time, this page was named 'Single Camel' since it tracks just one item.</p>
+
+            <hr />
+            <h2>Approach</h2>
+            We will use Python's BeautifulSoup library to scrape Amazon's website, Pandas to structure and store the data, and JavaScript to retrieve the data from my GitHub public repository and display it online in a graph on this webpage.
+            <ul>
+                <li><strong>Scraping</strong>
+                    <ul>
+                        <li><strong>Search:</strong> Conduct a standard search for "Samsung S24 Renewed" and apply a filter for the "renewed" condition.</li>
+                        <li><strong>Extract Data:</strong> Scrape the titles and prices of each listed item using the BeautifulSoup library (see Figures 2, 3, and 4 below).</li>
+                        <li><strong>Title Filtering:</strong> Convert the titles to lowercase and ensure they contain the words "samsung," "s24," and "renewed," while excluding any titles that include "plus" or "ultra" to avoid similar models.</li>
+                        <li><strong>Data Storage:</strong> Save the scraped information into a CSV file.</li>
+                    </ul>
+                <li><strong>Data Aggregation:</strong> Aggregate the data by date and append it to another CSV file, capturing the maximum, minimum, and average prices per day.</li>
+                </li>
+            </ul>
+            
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon.png"
+                alt="Figure 1"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 1 - Amazon Search.
+              </figcaption>
+            </figure>
+
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon_2.png"
+                alt="Figure 2"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 2 - Div Class to access each product tile.
+              </figcaption>
+            </figure>
+
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon_3.png"
+                alt="Figure 3"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 3 - Anchor Span to access each product price.
+              </figcaption>
+            </figure>
+
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon_4.png"
+                alt="Figure 4"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 4 - Anchor Class to access each product title text.
+              </figcaption>
+            </figure>
+          
+            <hr />
+            <h2>Links</h2>
+              
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/morilucas/"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/morilucas"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+    <script src="assets/js/camel.js"></script>
+  </body>
+</html>

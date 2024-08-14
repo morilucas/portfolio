@@ -11,7 +11,8 @@ var menuItems = [
 	{ name: "Altcoin Beta", link: "beta.html" },
 	{ name: "Excel vs. Python", link: "excelvspython.html" },
 	{ name: "Crypto Sentiment Score", link: "crypto_sentiment.html" },
-	{ name: "Scrape First", link: "minecraft.html" }
+	{ name: "Scrape First", link: "minecraft.html" },
+	{ name: "Single Camel", link: "camel.html" }
     // Add more items as needed
 ];
 
