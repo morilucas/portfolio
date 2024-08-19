@@ -95,17 +95,18 @@
 
             <hr />
             <h2>Approach</h2>
-            We will use Python's BeautifulSoup library to scrape Amazon's website, Pandas to structure and store the data, and JavaScript to retrieve the data from my GitHub public repository and display it online in a graph on this webpage.
+            <p>I'll use Python's BeautifulSoup library to scrape data from Amazon's website, organize and store it with Pandas, and leverage JavaScript to fetch this data from a public GitHub repository and display it on a webpage as a graph. To automate this process daily, I created an executable (.exe) using PyInstaller, which runs every day at 9 AM through Windows Task Scheduler (see Figure 5 and 6). I chose to run the task locally instead of remotely with GitHub Actions because I couldn’t scrape Amazon's website using GitHub servers—likely due to their IPs being mapped and flagged as bots by Amazon's system.</p>
             <ul>
                 <li><strong>Scraping</strong>
-                    <ul>
-                        <li><strong>Search:</strong> Conduct a standard search for "Samsung S24 Renewed" and apply a filter for the "renewed" condition.</li>
-                        <li><strong>Extract Data:</strong> Scrape the titles and prices of each listed item using the BeautifulSoup library (see Figures 2, 3, and 4 below).</li>
-                        <li><strong>Title Filtering:</strong> Convert the titles to lowercase and ensure they contain the words "samsung," "s24," and "renewed," while excluding any titles that include "plus" or "ultra" to avoid similar models.</li>
-                        <li><strong>Data Storage:</strong> Save the scraped information into a CSV file.</li>
-                    </ul>
-                <li><strong>Data Aggregation:</strong> Aggregate the data by date and append it to another CSV file, capturing the maximum, minimum, and average prices per day.</li>
-                </li>
+                  <ul>
+                      <li><strong>Search:</strong> Conduct a standard search for "Samsung S24 Renewed" and apply a filter for the "renewed" condition.</li>
+                      <li><strong>Extract Data:</strong> Scrape the titles and prices of each listed item using the BeautifulSoup library (see Figures 2, 3, and 4 below).</li>
+                      <li><strong>Title Filtering:</strong> Convert the titles to lowercase and ensure they contain the words "samsung," "s24," and "renewed," while excluding any titles that include "plus" or "ultra" to avoid similar models.</li>
+                      <li><strong>Data Storage:</strong> Save the raw scraped information into a CSV file.</li>
+                  </ul>
+              </li>
+              <li><strong>Data Aggregation:</strong> Aggregate the raw data by date and append it to another CSV file, capturing the maximum, minimum, and average prices per day.</li>
+              <li><strong>Push to Repo:</strong> Use the subprocess library to automatically commit changes and push to the GitHub repository. The new data will then be available to access online by this page using JavaScript.</li>
             </ul>
             <hr>
             <br>
@@ -153,6 +154,30 @@
               />
               <figcaption>
                 Figure 4 - Anchor Class to access each product title text.
+              </figcaption>
+            </figure>
+
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon_5.png"
+                alt="Figure 5"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 5 - Schedule to run the .exe file.
+              </figcaption>
+            </figure>
+
+            <br>
+            <figure style="flex: 1; margin-right: 10px; text-align: center">
+              <img
+                src="images/camel/screenshot_amazon_6.png"
+                alt="Figure 6"
+                style="width: 75%; height: auto"
+              />
+              <figcaption>
+                Figure 6 - .exe file to run by the scheduler.
               </figcaption>
             </figure>
           
