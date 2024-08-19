@@ -108,7 +108,27 @@
               <li><strong>Data Aggregation:</strong> Aggregate the raw data by date and append it to another CSV file, capturing the maximum, minimum, and average prices per day.</li>
               <li><strong>Push to Repo:</strong> Use the subprocess library to automatically commit changes and push to the GitHub repository. The new data will then be available to access online by this page using JavaScript.</li>
             </ul>
+
+            <hr />
+            <h2>Lessons Learned</h2>
+            <ul>
+                <li>
+                    Some websites, like Amazon, block known servers such as GitHub. A workaround is to run the script locally. This can be achieved by creating an executable (.exe) from a Python script and using the Windows Task Scheduler for automation.
+                </li>
+                <li>
+                    When setting up the task in Windows Task Scheduler, configure the "Start in" directory to point to the folder where your GitHub repository is located. This allows the script to push updates using the subprocess library without path issues.
+                </li>
+                <li>
+                    I set up an AWS RDS database to store project data, but GitHub Pages does not support backend functionalities, limiting deployment options.
+                </li>
+                <li>
+                    GitHub Actions can run tasks on a local machine through self-hosted runners. While I considered this option, I decided against it due to potential security risks.
+                </li>
+            </ul>
+            
+            
             <hr>
+            <h2>Figures</h2>
             <br>
             <figure style="flex: 1; margin-right: 10px; text-align: center">
               <img
