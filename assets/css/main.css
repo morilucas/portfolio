@@ -3195,8 +3195,6 @@ input, select, textarea {
 		}
 		
 		.mainChart {
-			width: 100% !important;  /* Ensures it takes the full width of its container */
-			height: 100% !important; /* Ensures it takes the full height of its container */
 			display: block;          /* Avoids inline default of canvas, which can cause issues */
 		}
 	}
