@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Together API</title>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="messages"></div>
+    <input type="text" id="user-input" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value;
+      if (!message) return;
+
+      displayMessage(message, 'user');
+      input.value = '';
+
+      try {
+        const response = await fetch('/api/together-chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message })
+        });
+        const data = await response.json();
+        displayMessage(data.reply, 'bot');
+      } catch (error) {
+        console.error('Error:', error);
+        displayMessage("Sorry, I couldn't connect to the server.", 'bot');
+      }
+    }
+
+    function displayMessage(text, sender) {
+      const messageContainer = document.createElement('div');
+      messageContainer.className = sender;
+      messageContainer.innerText = text;
+      document.getElementById("messages").appendChild(messageContainer);
+    }
+  </script>
+
+  <style>
+    #chat-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    #messages div {
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .user {
+      background-color: #d1e7dd;
+      text-align: right;
+    }
+    .bot {
+      background-color: #f8d7da;
+      text-align: left;
+    }
+    #user-input {
+      width: calc(100% - 80px);
+      padding: 8px;
+    }
+    button {
+      padding: 8px;
+    }
+  </style>
+</body>
+</html>
