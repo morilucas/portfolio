@@ -9,7 +9,7 @@ async function sendMessage() {
     userInput.value = "";
 
     try {
-        const response = await fetch("/api/chat", {
+        const response = await fetch("https://portfolio-six-henna-56.vercel.app/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
