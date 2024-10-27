@@ -3364,3 +3364,15 @@ input, select, textarea {
 			}
 
 		}
+
+/* Additional */
+	.chat-box {
+		max-width: 1400px; /* Set your desired width */
+		margin: 0 auto; /* Center it */
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		overflow-y: auto;
+		max-height: 300px; /* Keep the max height as desired */
+	}
+		
