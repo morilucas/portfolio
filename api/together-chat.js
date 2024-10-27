@@ -12,21 +12,22 @@ export default async (req, res) => {
   }
 
   try {
-    const response = await fetch('https://api.together.xyz/v1/chat', {
+    const response = await fetch('https://api.together.xyz/v1/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.TOGETHER_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        model: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
         prompt: message,
-        model: 'llama-3.2',  // Replace this with the model version in use
-        temperature: 0.7, // Adjust as necessary
+        max_tokens: 200,
+        role: "assistant"
       })
     });
     
     const data = await response.json();
-    res.status(200).json({ reply: data.response });
+    res.status(200).json({ reply: data.choices[0].text.trim() });
   } catch (error) {
     console.error('Error connecting to Together API:', error);
     res.status(500).json({ error: 'Failed to connect to Together API' });
